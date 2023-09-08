@@ -2,7 +2,7 @@ module.exports = {
     HOST: 'localhost',
     USER: 'root',
     PASSWORD: '',
-    DB: 'profile_db',
+    DB: 'new_sequelize_db',
     dialect: 'mysql',
 
     pool: {

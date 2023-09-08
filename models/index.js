@@ -7,6 +7,7 @@ const sequelize = new Sequelize(
     dbConfig.USER,
     dbConfig.PASSWORD, {
         host: dbConfig.HOST,
+        port:'4306',
         dialect: dbConfig.dialect,
         operatorsAliases: false,
 
@@ -25,6 +26,7 @@ sequelize.authenticate()
     console.log('connected..')
 })
 .catch(err => {
+    console.log("*********")
     console.log('Error'+ err)
 })
 

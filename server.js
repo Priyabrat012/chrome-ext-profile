@@ -28,6 +28,40 @@ app.use('/api/profile', router)
 
 
 //new
+const puppeteer = require('puppeteer-core');
+
+(async () => {
+  const browser = await puppeteer.launch({ headless: true,
+    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+});
+
+
+  const page = await browser.newPage();
+
+  
+  // Navigate to the LinkedIn feed.
+   await page.goto('https://www.linkedin.com/feed/');
+  const likeCount = 5; // Replace with your actual like count input
+  const commentCount = 3;
+  // Perform random liking/reacting on posts.
+  console.log("****","****")
+  const likeButtonSelector = document.querySelector('react-button__text'); // Replace with the actual selector for the like button.
+  for (let i = 0; i < likeCount; i++) {
+    const likeButtons = await page.$$(likeButtonSelector);
+    console.log("****",likeButtons[i],"****")
+    if (likeButtons[i]) {
+      await likeButtons[i].click(); //click handlerr
+      console.log("**done**"); 
+    }
+  }
+
+
+  // Close the browser when done.
+  await browser.close();
+})();
+
+
+/// end
 
 
 
@@ -39,7 +73,7 @@ app.get('/', async (req,res) => {
 
 //port
 
-const PORT = process.env.PORT || 8080
+const PORT =  8080
 
 //server
 
